@@ -1,0 +1,27 @@
+services:
+  mailnotifier:
+    build:
+      context: ./mail-notifier
+      dockerfile: Dockerfile
+    container_name: mailnotifier
+    env_file: .env
+    environment:
+      - RABBITMQ_HOST=${RABBITMQ_HOST}
+      - RABBITMQ_PORT=${RABBITMQ_PORT}
+      - RABBITMQ_USER=${RABBITMQ_USER}
+      - RABBITMQ_PASS=${RABBITMQ_PASS}
+      - SENDGRID_API_KEY=${SENDGRID_API_KEY}
+      - FROM_EMAIL=${FROM_EMAIL}
+  phonenotifier:
+    build:
+      context: ./phone-notifier
+      dockerfile: Dockerfile
+    container_name: phonenotifier
+    env_file: .env
+    environment:
+      - RABBITMQ_HOST=${RABBITMQ_HOST}
+      - RABBITMQ_PORT=${RABBITMQ_PORT}
+      - RABBITMQ_USER=${RABBITMQ_USER}
+      - RABBITMQ_PASS=${RABBITMQ_PASS}
+      - PUSHOVER_API_KEY=${PUSHOVER_API_KEY}
+      - PUSHOVER_USER_KEY=${PUSHOVER_USER_KEY}
