@@ -1,8 +1,30 @@
-# RabbitMQ notifications
+# Notifications via RabbitMQ
 
-Simple little notifications stack that takes messages from RabbitMQ direct exchange and sends them either to phone (Pushover) or email (SendGrid).
+Simple little notifications utility that takes messages from RabbitMQ direct exchange and sends them either to phone (Pushover) or email (SendGrid).
 
-To send a notification, post to the notifications exchange:
+## Run
+
+```
+docker compose up
+```
+
+## Environment Variables
+
+| Key | Description |
+| --- | ----------- |
+| **RABBITMQ** | https://www.rabbitmq.com/ |
+| RABBITMQ_HOST | Address to the RabbitMQ host, e.g `localhost` |
+| RABBITMQ_PORT | The port that RabbitMQ is running on, default `5672` |
+| RABBITMQ_USER | The name of the user with which to connect to RabbitMQ |
+| RABBITMQ_PASS | The password of the RabbitMQ user |
+| **PUSHOVER** | https://pushover.net/ |
+| PUSHOVER_API_KEY | The Pushover API key. Found in the control panel |
+| PUSHOVER_USER_KEY | Your Pushover user key. Found in the control panel |
+| **SENDGRID** | https://sendgrid.com/ |
+| SENDGRID_API_KEY | SendGrid API key, created in SendGrid control panel |
+| FROM_EMAIL | The email that is listed as sender. |
+
+## Sending notifications
 
 ```py
 import os
