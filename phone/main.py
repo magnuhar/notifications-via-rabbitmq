@@ -17,9 +17,9 @@ channel.queue_bind(exchange="notifications", queue=queue_name, routing_key="phon
 print("[*] Waiting for notifications. To exit press CTRL+C")
 
 def callback(ch, method, properties, body: bytes):
-    print(f" [x] Received {body.decode('utf-8')}")
-
     json_body = json.loads(body.decode("utf-8"))
+
+    print(f" [x] Received {json_body}")
 
     body = json_body["body"]
 
