@@ -1,5 +1,5 @@
 import json
-from connection import channel
+from common.connection import channel
 import httpx
 import dotenv
 import os
